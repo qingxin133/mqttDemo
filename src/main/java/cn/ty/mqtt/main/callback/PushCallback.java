@@ -1,7 +1,8 @@
 package cn.ty.mqtt.main.callback;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
-import org.eclipse.paho.client.mqttv3.MqttCallback;  
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;  
   
 /**  
@@ -29,13 +30,17 @@ public class PushCallback implements MqttCallback {
     }  
     
     public void deliveryComplete(IMqttDeliveryToken token) {
-        System.out.println("deliveryComplete---------" + token.isComplete());  
+        try {
+			System.out.println(token.getMessage().toString()+"deliveryComplete---------" + token.isComplete());
+		} catch (MqttException e) {
+			e.printStackTrace();
+		}  
     }
  
     public void messageArrived(String topic, MqttMessage message) throws Exception {
         // subscribe后得到的消息会执行到这里面  
-        System.out.println("接收消息主题 : " + topic);  
-        System.out.println("接收消息Qos : " + message.getQos());  
-        System.out.println("接收消息内容 : " + new String(message.getPayload()));  
+        System.out.println("收到消息，主题 : " + topic+"，Qos : " + message.getQos()+"，内容 : " + new String(message.getPayload()));  
+//        System.out.println();  
+//        System.out.println();  
     }  
 }
