@@ -31,7 +31,7 @@ public class PushCallback implements MqttCallback {
     
     public void deliveryComplete(IMqttDeliveryToken token) {
         try {
-			System.out.println(token.getMessage().toString()+"deliveryComplete---------" + token.isComplete());
+			System.out.println(token.getMessage().toString()+",deliveryComplete---------" + token.isComplete());
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}  
@@ -43,4 +43,5 @@ public class PushCallback implements MqttCallback {
 //        System.out.println();  
 //        System.out.println();  
     }  
+    
 }

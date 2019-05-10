@@ -1,0 +1,14 @@
+mqtt: 
+  client:
+    host_path: tcp://192.168.80.128:1883
+    username: admin
+    password: public
+    publishClientId: publish124
+    publisQos: 0
+    publisTopic: /ty/properation
+    cosumerClientId: cosumer125
+    consumerTopics: 
+      - /ty/properation
+    consumerQos: 
+      - 1
+    

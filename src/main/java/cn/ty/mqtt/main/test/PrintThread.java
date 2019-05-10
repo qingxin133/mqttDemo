@@ -1,4 +1,4 @@
-package cn.ty.mqtt.main;
+package cn.ty.mqtt.main.test;
 
 public class PrintThread extends Thread {
 	

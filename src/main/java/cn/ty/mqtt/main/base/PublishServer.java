@@ -1,4 +1,4 @@
-package cn.ty.mqtt.main;
+package cn.ty.mqtt.main.base;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
@@ -18,7 +18,7 @@ import cn.ty.mqtt.util.RandomUtil;
  * Title:Server Description: 服务器向多个客户端推送主题，即不同客户端可向服务器订阅相同主题
  * 
  */
-public class Publish implements Runnable {
+public class PublishServer implements Runnable {
 
 	public static final String HOST = "tcp://192.168.80.128:1883";
 //	public static final String TOPIC1 = "toclient/1";
@@ -28,16 +28,14 @@ public class Publish implements Runnable {
 
 	private MqttTopic topic;
 	private String userName = "admin";
-	private String passWord = "password";
+	private String passWord = "public";
 	
 	private String clientid ;
 	private int qos;
 	private String topicName;
 	private MqttClient client;
 	
-
-
-	public Publish(String clientid,String topicName,int qos){
+	public PublishServer(String clientid,String topicName,int qos){
 		this.clientid = clientid;
 		this.topicName = topicName;
 		this.qos = qos;
@@ -54,7 +52,7 @@ public class Publish implements Runnable {
 				options.setConnectionTimeout(10);
 				// 设置会话心跳时间
 				options.setKeepAliveInterval(20);
-//            client.setCallback(new PushCallback());
+				client.setCallback(new PushCallback());
 				client.connect(options);
 				topic = client.getTopic(topicName);
 			} catch (IllegalArgumentException e) {
@@ -96,17 +94,7 @@ public class Publish implements Runnable {
 
 	public static void main(String[] args) {
 		
-//        server.message = new MqttMessage();
-//        server.message.setQos(1);
-//        server.message.setRetained(false);
-//        server.message.setPayload("给客户端125推送的信息2244".getBytes());
-//        server.publish(server.topic125 , server.message);
-//        
-//        server.message = new MqttMessage();
-//        server.message.setQos(1);
-//        server.message.setRetained(false);
-//        server.message.setPayload("给客户端126推送的信息5555555".getBytes());
-//        server.publish(server.topic126 , server.message);
+ 
 
 	}
 

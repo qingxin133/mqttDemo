@@ -1,4 +1,4 @@
-package cn.ty.mqtt.main;
+package cn.ty.mqtt.main.base;
 
 import java.util.concurrent.ScheduledExecutorService;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -9,7 +9,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import cn.ty.mqtt.main.callback.PushCallback;
 
-public class Consumer {
+public class ConsumerServer {
 
 	public static final String HOST = "tcp://192.168.80.128:1883";
 	public static final String TOPIC1 = "toclient/1";
@@ -18,8 +18,8 @@ public class Consumer {
 	private static final String clientid = "client124";
 	private MqttClient client = null;
 	private MqttConnectOptions options;
-	private String userName = "admin";
-	private String passWord = "password";
+	private String userName = "aa";
+	private String passWord = "bb";
 
 	private ScheduledExecutorService scheduler;
 
@@ -64,7 +64,7 @@ public class Consumer {
 	}
 
 	public static void main(String[] args) throws MqttException {
-		Consumer client = new Consumer();
+		ConsumerServer client = new ConsumerServer();
 		client.start();
 	}
 
